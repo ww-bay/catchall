@@ -13,7 +13,7 @@ services:
     volumes:
       - /opt/docker_volumes/catchall/data/caught:/usr/share/nginx/html:ro      # nginx file access
     command: >
-      /bin/sh -c "wget -q https://raw.githubusercontent.com/ww-bay/catchall/main/conf/default.conf -O /etc/nginx/conf.d/default.conf &&
+      /bin/sh -c "wget -q https://raw.githubusercontent.com/ww-bay/catchall/refs/heads/main/nginx/default.conf -O /etc/nginx/conf.d/default.conf &&
       exec nginx -s reload"
     networks:
       - proxy
