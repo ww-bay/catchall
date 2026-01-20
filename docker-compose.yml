@@ -30,9 +30,9 @@ services:
     restart: unless-stopped
     volumes:
       - ./caught:/srv                                           # filebrowser file access
-      - ./filebrowser.db:/database.db                           # filebrowser database
+      - ./filebrowser_data:/data                                # filebrowser database
     environment:
-      - FB_DATABASE=/database.db
+      - FB_DATABASE=/data/database.db
       - FB_ROOT=/srv
     networks:
       - proxy
