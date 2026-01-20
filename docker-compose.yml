@@ -1,3 +1,9 @@
+#######################
+#   REQUIRED ENV:     #
+#   - MANAGER_HOST    #
+#   - CATCHALL_HOST   #
+#######################
+
 services:
   # URL: https://${CATCHALL_HOST}
   web:
