@@ -11,8 +11,8 @@ services:
     container_name: catchall-host
     restart: unless-stopped
     volumes:
-      - ./caught:/usr/share/nginx/html:ro                       # nginx file access
-      - ./conf/:/etc/nginx/conf.d:ro   # nginx configs
+      - ./caught:/usr/share/nginx/html:ro                        # nginx file access
+      - ./conf:/etc/nginx/conf.d:ro                              # nginx configs
     networks:
       - proxy
     labels:
@@ -36,10 +36,11 @@ services:
     restart: unless-stopped
     volumes:
       - ./caught:/srv                                           # filebrowser file access
-      - ./filebrowser_data:/data                                # filebrowser database
+      - ./filebrowser/config:/config
+      - ./filebrowser/database:/database                                # filebrowser database
     environment:
-      - FB_DATABASE=/data/database.db
-      - FB_ROOT=/srv
+      - PUID=$(id -u)
+      - PGID=$(id -g)
     networks:
       - proxy
     labels:
