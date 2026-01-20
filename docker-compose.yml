@@ -11,8 +11,7 @@ services:
     container_name: catchall-host
     restart: unless-stopped
     volumes:
-      - ./caught:/usr/share/nginx/html:ro                        # nginx file access
-      - ./conf:/etc/nginx/conf.d:ro                              # nginx configs
+      - /opt/docker_volumes/catchall/data/caught:/usr/share/nginx/html:ro     # nginx file access
     networks:
       - proxy
     labels:
@@ -35,9 +34,9 @@ services:
     container_name: catchall-manager
     restart: unless-stopped
     volumes:
-      - ./caught:/srv                                           # filebrowser file access
-      - ./filebrowser/config:/config
-      - ./filebrowser/database:/database                                # filebrowser database
+      - /opt/docker_volumes/catchall/data/caught:/srv                   # filebrowser file access
+      - /opt/docker_volumes/catchall/data/filebrowser:/config
+      - /opt/docker_volumes/catchall/data/filebrowser:/database                                # filebrowser database
     environment:
       - PUID=$(id -u)
       - PGID=$(id -g)
