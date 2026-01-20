@@ -25,7 +25,7 @@ services:
 
   # URL: https://${MANAGER_HOST}/
   files:
-    image: filebrowser/filebrowser
+    image: filebrowser/filebrowser:s6
     container_name: catchall-manager
     restart: unless-stopped
     volumes:
